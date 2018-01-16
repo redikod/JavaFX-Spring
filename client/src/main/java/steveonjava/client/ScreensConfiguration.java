@@ -86,8 +86,20 @@ public class ScreensConfiguration {
 
     @Bean
     @Scope("prototype")
+    CustomerEditorController customerEditorController() {
+        return new CustomerEditorController();
+    }
+
+    @Bean
+    @Scope("prototype")
     FXMLDialog loginDialog() {
         return new FXMLDialog(loginController(), getClass().getResource("Login.fxml"), primaryStage, StageStyle.UNDECORATED);
+    }
+
+    @Bean
+    @Scope("prototype")
+    FXMLDialog registerDialog() {
+        return new FXMLDialog(customerEditorController(), getClass().getResource("customer_editor.fxml"), primaryStage, StageStyle.UNDECORATED);
     }
 
     @Bean

@@ -28,67 +28,37 @@
 package steveonjava.client;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 
-public class LoginController implements DialogController {
+public class CustomerEditorController implements DialogController {
     @Autowired
-    private AuthenticationManager authenticationManager;
-    private ScreensConfiguration screens;
+    private CustomerModel model;
     private FXMLDialog dialog;
+    private ScreensConfiguration screens;
 
     public void setDialog(FXMLDialog dialog) {
         this.dialog = dialog;
     }
 
-    public LoginController(ScreensConfiguration screens) {
-        this.screens = screens;
-    }
-
     @FXML
-    Label header;
+    TextField firstName;
     @FXML
-    TextField username;
-    @FXML
-    TextField password;
-
-    @FXML
-    public void login() {
-        Authentication authToken = new UsernamePasswordAuthenticationToken(username.getText(), password.getText());
-        try {
-            authToken = authenticationManager.authenticate(authToken);
-            SecurityContextHolder.getContext().setAuthentication(authToken);
-        } catch (AuthenticationException e) {
-            header.setText("Login failure, please try again:");
-            header.setTextFill(Color.DARKRED);
-            return;
-        }
-        dialog.close();
-        screens.showScreen(screens.customerDataScreen());
-    }
+    TextField lastName;
 
     @FXML
     public void register() {
+        model.addCustomer(firstName.getText(), lastName.getText());
         dialog.close();
-        screens.registerDialog().show();
     }
 
     @FXML
-    public void employee() {
-        username.setText("employee");
-        password.setText("lol");
+    public void close() {
+        dialog.close();
     }
 
     @FXML
-    public void manager() {
-        username.setText("manager");
-        password.setText("password");
+    public void cancel() {
+        dialog.close();
     }
 }
