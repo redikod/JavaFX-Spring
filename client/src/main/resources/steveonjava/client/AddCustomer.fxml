@@ -6,8 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections ?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="233.999755859375" prefWidth="371.999755859375" style="-fx-background-color: #EEEEEE" xmlns:fx="http://javafx.com/fxml" fx:controller="steveonjava.client.AddCustomerController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="233.999755859375" prefWidth="371.999755859375" style="-fx-background-color: #EEEEEE"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="steveonjava.client.AddCustomerController">
   <children>
     <GridPane id="GridPane" layoutY="95.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="40.0">
       <children>
@@ -20,6 +24,7 @@
         <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
       </columnConstraints>
+      <!--
       <hgap>
         <Long fx:value="10" />
       </hgap>
@@ -29,7 +34,7 @@
       </rowConstraints>
       <vgap>
         <Long fx:value="10" />
-      </vgap>
+      </vgap> -->
     </GridPane>
     <Label layoutX="50.0" layoutY="28.0" text="Add New Customer">
       <font>
